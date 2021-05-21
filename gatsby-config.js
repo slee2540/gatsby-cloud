@@ -70,5 +70,13 @@ module.exports = {
         name: `content`,
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `oe2vldk4dw3v`,
+        accessToken: `4dD1Xc_1ziiaL_cHqwhwgjqjH-KyMShWc17b3qwasz4`,
+        host: `preview.contentful.com`,
+      },
+    },
   ],
 }

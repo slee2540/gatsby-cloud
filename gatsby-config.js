@@ -1,43 +1,74 @@
+const path = require('path')
+
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   siteMetadata: {
-    title: "IndieGameReviews",
+    title: 'IndieGameReviews',
   },
   plugins: [
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-gatsby-cloud",
-    "gatsby-plugin-image",
+    'gatsby-plugin-ts-config',
+    'gatsby-plugin-typegen',
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-typescript`,
       options: {
-        trackingId: "",
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
       },
     },
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
-        icon: "src/images/icon.png",
+        rule: {
+          include: /static/, // See below to configure properly
+        },
       },
     },
-    "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-root-import',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-gatsby-cloud',
+    'gatsby-plugin-image',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        name: "images",
-        path: "./src/images/",
+        trackingId: 'dlselrpdlaflqb',
       },
-      __key: "images",
+    },
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/images/icon.png',
+      },
+    },
+    'gatsby-plugin-mdx',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './src/images/',
+      },
+      __key: 'images',
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: 'pages',
+        path: './src/pages/',
       },
-      __key: "pages",
+      __key: 'pages',
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/content`,
+        name: `content`,
+      },
     },
   ],
-};
+}
